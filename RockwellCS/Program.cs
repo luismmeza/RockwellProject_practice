@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RockwellCS.ObjectsLesson;
 
 namespace RockwellCS
@@ -35,6 +36,37 @@ namespace RockwellCS
             Console.Read();
             CheckCapacity(soda);
             Console.Read();
+
+
+
+            
+
+
+            string stringData = "I am just a bunch of characters put together";
+
+            char character = 'a';
+
+            int number = 10;
+
+            double numberDOt = 1.2345678910;
+
+            decimal numberDotMore = 1.3265443135435135435435M;
+
+            bool ATrueOrFalse = true;
+
+
+
+
+
+            int[] collection = new int[30];
+            List<int> list = new List<int>();
+            Dictionary<string, int> StringInts = new Dictionary<string, int>();
+
+
+
+
+
+            Console.WriteLine();
         }
 
         static void CheckCapacity(ContainerInterface container)
