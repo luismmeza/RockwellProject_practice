@@ -43,6 +43,10 @@ namespace RockwellCS
             }
             return false;
         }
+        static void message(string message)
+        {
+            Console.WriteLine(message);
+        }
 
 
         static void CreatePillBottle()
