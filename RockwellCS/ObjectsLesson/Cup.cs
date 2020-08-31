@@ -8,5 +8,11 @@ namespace RockwellCS.ObjectsLesson
         {
             _Capacity = capcity;
         }
+            
+
+        public void saymessage() {
+            Console.WriteLine("Im a cup");
+            Console.Read();
+        }
     }
 }

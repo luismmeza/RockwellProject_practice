@@ -67,6 +67,9 @@ namespace RockwellCS
 
 
             Console.WriteLine();
+
+
+            cup.saymessage();
         }
 
         static void CheckCapacity(ContainerInterface container)
