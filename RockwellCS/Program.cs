@@ -6,12 +6,42 @@ namespace RockwellCS
 {
     class Program
     {
+        static UsersLibrary _users;
+
         static void Main(string[] args)
         {
+            _users = new UsersLibrary();
             Console.WriteLine("Hello World!");
             Console.Read();
 
-            CreatePillBottle();
+            if (SignIn() == true)
+            {
+                CreatePillBottle();
+            }
+            else
+            {
+                Console.WriteLine("Goodbye");
+            }
+        }
+
+
+        static bool SignIn()
+        {
+            Console.WriteLine("Please Enter Your Username");
+            string username = Console.ReadLine();
+            Console.WriteLine("Please Enter Password");
+            string password = Console.ReadLine();
+
+            foreach (UserModel user in _users.users)
+            {
+                if (username == user.username && password == user.password)
+                {
+                    Console.WriteLine($"Welcome {user.Name}");
+                    return true;
+                    break;
+                }
+            }
+            return false;
         }
 
 
