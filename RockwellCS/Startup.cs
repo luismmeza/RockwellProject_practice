@@ -24,23 +24,10 @@ namespace RockwellCS
 
         public void Start() 
         {
-            if (_userAuth == false) 
-            {
-                UserModel activeUser = new UserModel();
-                activeUser = UI.GetUserModel(activeUser);
-                AuthorizeUser(activeUser);
-
-            }
-            while (_run == true && _userAuth == true) 
-            {
-                string answer = UI.GetMenuInput();
-                int action = GetAction(answer);
-                DisplayAction(action);
-            }
-
+            RunProgram();
             if (_run == false) 
             {
-                Console.WriteLine($"Goodbye {_User.Name}");
+                Console.WriteLine($"Goodbye");
             }
         }
 
@@ -81,6 +68,8 @@ namespace RockwellCS
                 {
                     case 0:
                         _userAuth = false;
+                        Console.WriteLine($"Goodbye Mr. {_User.Name}");
+                        Console.ReadLine();
                         break;
                     case 1:
                         choice = UI.ObjectLessonMenu();
@@ -93,6 +82,12 @@ namespace RockwellCS
         }
         private void AuthorizeUser(UserModel user) 
         {
+            if (user.username == "0" || user.password == "0") 
+            {
+                _run = false;
+                _userAuth = true;
+            }
+
             foreach (UserModel u in _userDb.users) 
             {
                 if (u.username == user.username && u.password == user.password)
@@ -101,7 +96,7 @@ namespace RockwellCS
                     _User = u;
                     UI.SetMainMenuTitle(u);
                     break;
-                }
+                } 
             }
         }
         private void ObjectLessonOptions(int i) 
@@ -134,6 +129,28 @@ namespace RockwellCS
                 }
 
                 Console.ReadLine();
+            }
+        }
+        private void LogIn() 
+        {
+            while (_userAuth == false) 
+            {
+                UserModel user = new UserModel();
+                user = UI.GetUserModel(user);
+                AuthorizeUser(user);
+            }
+        }
+        private void RunProgram() 
+        {
+            while (_run == true) 
+            {
+                if (_userAuth == false) { LogIn(); }
+                else 
+                {
+                    string answer = UI.GetMenuInput();
+                    int action = GetAction(answer);
+                    DisplayAction(action);
+                }
             }
         }
         
