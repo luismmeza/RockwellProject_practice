@@ -45,5 +45,39 @@ namespace RockwellCS.UserInterface
 
             return nillUser;
         }
+
+        public static int ObjectLessonMenu() 
+        {
+            Console.WriteLine("1. \t Generate New Container");
+            Console.WriteLine("2. \t Generate New Container and Add it to the List");
+            Console.WriteLine("3. \t Display all Container Types and Capacities.");
+
+            string answer = Console.ReadLine();
+            int choice = ValidateAnswer(1, 3, answer);
+
+            return choice;
+        }
+
+        public static int ValidateAnswer(int min, int max, string choice) 
+        {
+            int answer = -500;
+
+            try 
+            {
+               answer = Convert.ToInt32(choice);
+                if (answer >= min && answer <= max) 
+                { 
+                    return answer; 
+                }
+                else 
+                {
+                    return answer;
+                }
+            }
+            catch (Exception e) 
+            {
+                return answer;
+            }
+        }
     }
 }

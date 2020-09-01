@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using RockwellCS.UserInterface;
-
+using RockwellCS.ObjectsLesson;
 namespace RockwellCS
 {
     class Startup
@@ -11,12 +11,14 @@ namespace RockwellCS
         bool _run;
         bool _userAuth;
         UserModel _User;
+        ContainerController _containerController;
 
         public Startup()
         {
             _userDb = new UsersLibrary();
             _run = true;
             _userAuth = false;
+            _containerController = new ContainerController();
 
         }
 
@@ -73,11 +75,16 @@ namespace RockwellCS
             }
             else 
             {
+
+                int choice = -1000;
                 switch (action) 
                 {
                     case 0:
+                        _userAuth = false;
                         break;
                     case 1:
+                        choice = UI.ObjectLessonMenu();
+                        ObjectLessonOptions(choice);
                         break;
                     default:
                         break;
@@ -97,6 +104,39 @@ namespace RockwellCS
                 }
             }
         }
+        private void ObjectLessonOptions(int i) 
+        {
+
+            if (i == 1)
+            {
+                var container = _containerController.CreateRandomContainer();
+                Console.WriteLine("Container Created...");
+                container.saymessage();
+                Console.WriteLine($"I have a capacity of {container._Capacity}");
+                Console.ReadLine();
+            }
+            else if (i == 2)
+            {
+                var container = _containerController.CreateRandomContainer();
+                Console.WriteLine("Container Created...");
+                container.saymessage();
+                Console.WriteLine($"I have a capacity of {container._Capacity}");
+                _containerController.AddContainerToList(container);
+                Console.WriteLine("Container added to list");
+                Console.ReadLine();
+            }
+            else if (i == 3) 
+            {
+                foreach (IContainer container in _containerController._containers) 
+                {
+                    int currentCOntainer = (_containerController._containers.IndexOf(container) + 1);
+                    Console.WriteLine(String.Format("{0,0} {1,-10} | {2,-15}",currentCOntainer, $"Type: {container._ContainerType}", $"Capacity: {container._Capacity}"));
+                }
+
+                Console.ReadLine();
+            }
+        }
+        
 
     }
 }
