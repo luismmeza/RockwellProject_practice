@@ -15,6 +15,7 @@ namespace RockwellCS.UserInterface
             Console.Clear();
             Console.WriteLine("0. \t Log Out");
             Console.WriteLine("1. \t Object Lesson");
+            Console.WriteLine("500. \t TEST");
             Console.WriteLine(" ");
         }
 

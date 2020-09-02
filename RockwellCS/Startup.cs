@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RockwellCS.UserInterface;
 using RockwellCS.ObjectsLesson;
+using RockwellCS.Challenges;
 namespace RockwellCS
 {
     class Startup
@@ -12,6 +13,7 @@ namespace RockwellCS
         bool _userAuth;
         UserModel _User;
         ContainerController _containerController;
+        ChallengesController _ChallengesCOntroller;
 
         public Startup()
         {
@@ -19,7 +21,7 @@ namespace RockwellCS
             _run = true;
             _userAuth = false;
             _containerController = new ContainerController();
-
+            _ChallengesCOntroller = new ChallengesController();
         }
 
         public void Start() 
@@ -74,6 +76,9 @@ namespace RockwellCS
                     case 1:
                         choice = UI.ObjectLessonMenu();
                         ObjectLessonOptions(choice);
+                        break;
+                    case 500:
+                        _ChallengesCOntroller.Test();
                         break;
                     default:
                         break;

@@ -4,4 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Challenges\" />
+    <Folder Include="Challenges\Esequiel\" />
+    <Folder Include="Challenges\Luis\" />
+  </ItemGroup>
 </Project>
